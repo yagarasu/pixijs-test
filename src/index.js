@@ -1,7 +1,9 @@
-import * as PIXI from 'pixi.js'
+import Game from './Game'
 
-const app = new PIXI.Application({
-  width: 720,
-  height: 420,
-  forceCanvas: true
-})
+const game = new Game()
+window.game = game
+
+game.run()
+window.setTimeout(() => {
+  game.stop()
+}, 1000)
