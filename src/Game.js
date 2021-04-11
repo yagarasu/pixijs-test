@@ -56,7 +56,7 @@ class Game {
       this.state.tick(delta)
     }
     if (this.running) {
-      window.requestAnimationFrame(this.tick)
+      //window.requestAnimationFrame(this.tick)
     }
   }
 }

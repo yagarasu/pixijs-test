@@ -1,4 +1,5 @@
 import * as PIXI from 'pixi.js'
+import { Loader } from '@pixi/loaders'
 
 class Graphics {
   constructor() {
@@ -7,6 +8,7 @@ class Graphics {
       height: 420,
       forceCanvas: true
     })
+    this.loader = new Loader()
   }
 
   getView() {
@@ -15,9 +17,13 @@ class Graphics {
 
   load(images) {
     return new Promise(resolve => {
-      images.forEach(image => PIXI.loader.add(image.name, image.url))
-      PIXI.loader.load((loader, resources) => resolve(resources))
+      images.forEach(image => this.loader.add(image.name, image.url))
+      this.loader.load((loader, resources) => resolve(resources))
     })
+  }
+
+  getImage(name) {
+    return this.loader.resources[name]
   }
 }
 

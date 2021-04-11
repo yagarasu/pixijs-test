@@ -7,6 +7,7 @@
     "pixi.js": "^6.0.2"
   },
   "devDependencies": {
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.1",
     "webpack": "^5.31.0",
     "webpack-cli": "^4.6.0",
