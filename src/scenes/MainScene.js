@@ -5,27 +5,28 @@ class MainScene extends Scene {
   constructor(game) {
     super(game)
     this.game = game
+    this.sprite = null
   }
 
   async preload() {
-    // Use file loader to load some images
     await this.game.graphics.load([
       { name: 'sprite', url: sprite }
     ])
-    console.log('>Loaded', this.game.graphics)
   }
 
   enter() {
-    this.sprite = new PIXI.Sprite(this.game.graphics.getImage('sprite').texture)
-    this.game.graphics.app.stage.add(this.sprite)
+    this.sprite = this.game.graphics.createSprite('sprite')
+    this.game.graphics.app.stage.addChild(this.sprite)
+    this.sprite.scale.set( 0.25, 0.25 )
+    this.sprite.vx = 0.5
   }
 
   tick(delta) {
-    console.log('tick', delta)
+    this.sprite.x += this.sprite.vx * delta
   }
 
   exit() {
-
+    this.game.graphics.app.stage.removeChild(this.sprite)
   }
 }
 

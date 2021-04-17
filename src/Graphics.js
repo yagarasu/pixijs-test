@@ -25,6 +25,10 @@ class Graphics {
   getImage(name) {
     return this.loader.resources[name]
   }
+
+  createSprite(name) {
+    return new PIXI.Sprite(this.getImage(name).texture)
+  }
 }
 
 export default Graphics

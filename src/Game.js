@@ -26,7 +26,7 @@ class Game {
         this.states[sceneKey].preload()
       ]
     }, []))
-    this.state = this.states.MainScene
+    this.setState(this.states.MainScene)
   }
 
   async run() {
@@ -44,7 +44,9 @@ class Game {
   }
 
   setState(newState) {
-    this.state.exit()
+    if (this.state) {
+      this.state.exit()
+    }
     newState.enter()
     this.state = newState
   }
@@ -56,7 +58,7 @@ class Game {
       this.state.tick(delta)
     }
     if (this.running) {
-      //window.requestAnimationFrame(this.tick)
+      window.requestAnimationFrame(this.tick)
     }
   }
 }
